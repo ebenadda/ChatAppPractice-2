@@ -15,4 +15,6 @@ chatForm.addEventListener("submit", (e) => {
 
   //Emit messge ot server
   socket.emit("chartMessage", msg);
+
+  //console.log(msg);
 });

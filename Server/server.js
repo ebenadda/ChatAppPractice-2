@@ -25,7 +25,7 @@ io.on("connection", (socket) => {
 
   //listen ofr chat message
   socket.on("chatMessage", (msg) => {
-    console.log();
+    console.log(msg);
   });
 });
 
