@@ -23,9 +23,9 @@ io.on("connection", (socket) => {
     io.emit("message", "A user has left the chat");
   });
 
-  //listen ofr chat message
+  //listen for chat message
   socket.on("chatMessage", (msg) => {
-    console.log(msg);
+    io.emit("message", msg);
   });
 });
 
