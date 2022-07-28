@@ -10,7 +10,7 @@ const { username, room } = Qs.parse(location.search, {
 
 const socket = io();
 
-//join Chatroom
+//Join Chatroom
 socket.emit("joinRoom", { username, room });
 
 //Get room and users
@@ -19,7 +19,7 @@ socket.on("roomUsers", ({ room, users }) => {
   outputUsers(users);
 });
 
-//message from server
+//Message from server
 socket.on("message", (message) => {
   console.log(message);
   outputMessage(message);
@@ -28,24 +28,22 @@ socket.on("message", (message) => {
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
 
-//message submit
+//Message submit
 chatForm.addEventListener("submit", (e) => {
   e.preventDefault();
 
   //Get message text
   const msg = e.target.elements.msg.value;
 
-  //Emit messge ot server
+  //Emit message ot server
   socket.emit("chatMessage", msg);
 
   //Clear input
   e.target.elements.msg.value = "";
   e.target.elements.msg.focus();
-
-  //console.log(msg);
 });
 
-//output message to DOM
+//Output message to DOM
 function outputMessage(message) {
   const div = document.createElement("div");
   div.classList.add("message");
